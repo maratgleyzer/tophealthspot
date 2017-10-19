@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php echo $this->headTitle() ?>
+<?php echo $this->headMeta() ?>
+<link href="/assets/css/th.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="Shortcut Icon" href="/favicon.ico"/>
+<?php echo $this->headScript() ?>
+<script type="text/javascript" src="/assets/js/clearBox.js"></script>
+<script type="text/javascript" src="/assets/js/bookmark-us.js"></script> 
+<meta name="google-site-verification" content="okOMkac9K7fLWq5k42GpdRhH8Mw84YNwTAb-aEu84kQ" />
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="contentHolder">
+		<div id="topBar">
+			<a href="/"><img id="logo" src="/assets/images/th-logo.jpg" width="336" height="75" alt="Top Health Spot" /></a>
+				<div id="Bookmark">
+					<div style="margin-bottom:0.25em;">Favorite/RSS:</div>
+						<div>
+							<a href="javascript:bookmarksite('TopHealthSpot - Health Product Coupons, Discounts, and More..', window.location.href)"><img src="/assets/images/favorite-icon.png" width="32" height="32" alt="Bookmark" /></a>
+							<img src="/assets/images/feed-icon.png" width="32" height="32" alt="RSS Feed" />
+						</div>
+					</div>
+					<div id="socialSites">
+						<div style="margin-bottom:0.25em;">Follow us on social sites:</div>
+						<div>
+							<a href="http://twitter.com/tophealthspot" title="Twitter" target="_blank"><img src="/assets/images/twitter-icon.png" width="32" height="32" alt="Twitter" /></a>
+							<a href="http://facebook.com/home.php?#/profile.php/?ref=profile&id=1398900200" title="Facebook" target="_blank"><img src="/assets/images/facebook-icon.png" width="32" height="32" alt="FaceBook" /></a>
+							<img src="/assets/images/myspace-icon.png" width="32" height="32" alt="MySpace" />
+							<img src="/assets/images/stumbleupon-icon.png" width="32" height="32" alt="StumbleUpon" />
+						</div>
+					</div>
+					<div id="siteSearch">
+						<a href="/"><span>Home</span></a> | 
+						<a href="/content/2/about-us/"><span>About Us</span></a> | 
+						<a href="/content/4/top-health-faqs/"><span>FAQS</span></a> | 
+						<a href="/content/contact-us/"><span>Contact Us</span></a>
+						<form id="site-search" action="/index/search/search/" method="get" >
+						<input type="text" name="searchBox" id="searchBox" value="Search..." />
+						<input type="submit" id="submit" name="submit" value="Search" />
+						</form>
+					</div>
+				</div>
+				<div id="navHolder">
+					<ul id="navigation">
+						<li id="link1"><a href="/category/10/Vitamin-Health-Coupons/"><span>VITAMIN COUPONS</span></a></li>
+						<li id="link2"><a href="/category/6/Mens-Health-Coupons/"><span>MEN&#39;S HEALTH</span></a></li>
+						<li id="link3"><a href="/category/1/Diet-Program-Coupons/"><span>DIET PROGRAMS</span></a></li>
+						<li id="link4"><a href="/category/9/Womens-Health-Coupons/"><span>WOMEN&#39;S HEALTH</span></a></li>
+						<li id="link5"><a href="/category/8/Mother-Child/"><span>MOTHER &amp; CHILD</span></a></li>
+						<li id="link6"><a href="/category/2/Health-Fitness/"><span>HEALTH &amp; FITNESS</span></a></li>
+						<li id="link13"><a href="/category/4/Pet-Health-Coupons/"><span>PET HEALTH</span></a></li>
+					</ul>
+				</div>
+				<?php if(isset($this->indexHeader)) { ?>
+					<div id="titleHolder"><h1>TopHealthSpot, the #1 Source for health coupons and discount coupon codes.</h1></div>
+				 <?php echo $this->indexHeader; } ?>
+				
+			<div id="mainContent">
+				<?php if(isset($this->indexSliderNav)) { 
+					      echo $this->indexSliderNav; } ?>
+				<div id="contentLt">
+					<?php if(isset($this->headerImage)) { ?>
+						<div id="pageHeader">
+					    <img src="<?php echo $this->headerImage; ?>" />
+					     </div>
+					     <?php if(isset($this->categoryHeader)){ ?>
+					     <h1 id="pageTitle"><?php echo $this->categoryHeader; ?></h1>
+					     	<?php } elseif (isset($this->subCategoryHeader)) { ?>
+					     	<h1 id="pageTitle"><?php echo $this->subCategoryHeader; ?></h1>
+					     	<?php } elseif (isset($this->coupon)) { ?>
+					     	<h1 id="pageTitle"><?php echo $this->coupon['couponTitle']; ?></h1>
+					     <?php } ?>
+					  <?php } ?>
+					<div id="productNavigation">
+						<?php //This statement paints a drop down of all stores
+							if ($this->StoreDropDown) echo "<div id=\"productNavTop\">Health Coupons By Store</div>$this->StoreDropDown";
+						?>
+						<?php //This foreach returns all stores with coupons
+							if (is_array($this->layoutStores)) { ?>
+							<ul class="subCatTitles">
+							<?php
+								foreach ($this->layoutStores as $store) { ?>
+								<li><a href="/store/detail/id/<?php echo $store['storeID'] ?>"><?php echo htmlspecialchars($store['storeName'], null, null, false); ?></a></li>
+							<?php } ?>
+								<li><a style="font-size:14px;font-weight:bold;text-align:center;" href="/store">&lt;&lt; view all stores &gt;&gt;</a></li>
+							</ul><br />
+							<?php } ?>
+						<div id="productNavTop">Health Coupon Categories</div>
+						<ul id="products">
+							<?php //This foreach returns the categories
+									foreach( $this->layoutCategories as $categoryID => $category ){ ?>
+								 <li class="catTitles"><a href="/category/<?php echo $categoryID .'/' . $this->titleUrl($category['name']) ; ?>/"><?php echo htmlspecialchars($category['name'], null, null, false); ?></a></li>	
+							<?php // This foreach returns all the subcategories
+								if (isset($category['subCategories'])) { $numSubCategories = count( $category['subCategories']); $i=0; 
+								foreach ( $category['subCategories'] as $subCategoryID => $subCategory ) { ?>
+								<li <?php if( $i == $numSubCategories - 1){ echo 'class="endLink"'; } ?>>
+								<ul class="subCatTitles">
+								<li><a href="/sub-category/<?php echo $subCategoryID; ?>/<?php echo $this->titleUrl($subCategory['name']); ?>/" ><?php echo htmlspecialchars($subCategory['name'], null, null, false); ?></a></li>	
+								</ul>
+								</li>
+								
+									<?php 
+									if (isset($subCategory['coupons'])) { $numCoupons = count( $subCategory['coupons']); $j=0; 
+									foreach ( $subCategory['coupons'] as $storeID => $storeName ) { ?>
+									
+									<li <?php if( $j == $numCoupons - 1){ echo 'class="endLink"'; } ?>>
+									<ul class="couponLinks">
+									<li><a href="/store/detail/id/<?php echo $storeID; ?>"><?php echo htmlspecialchars($storeName, null, null, false); ?></a></li>	
+									</ul>
+									</li>
+	    							<?php $j++; } 	
+    							 $i++; }?> 
+    							 <?php 
+								}
+							
+							}
+							
+						}?>
+					</ul>
+	</div><!-- End Product Nav Div -->
+	
+	<?= $this->layout()->content ?>
+
+			<div class="clearfix"></div>
+			</div>
+			<div id="contentBottom"></div>
+			<div id="footer">
+				<div id="footerTop">
+				<ul id="footerLinks">
+					<li><a href="/category/10/Vitamin-Health-Coupons/"><span>VITAMIN COUPONS</span></a></li>
+					<li><a href="/category/6/Mens-Health-Coupons/"><span>MEN&#39;S HEALTH</span></a></li>
+					<li><a href="/category/1/Diet-Program-Coupons/"><span>DIET PROGRAMS</span></a></li>
+					<li><a href="/category/9/Womens-Health-Coupons/"><span>WOMEN&#39;S HEALTH</span></a></li>
+					<li><a href="/category/8/Mother-Child/"><span>MOTHER &amp; CHILD</span></a></li>
+					<li><a href="/category/2/Health-Fitness/"><span>HEALTH &amp; FITNESS</span></a></li>
+					<li class="lastLink"><a href="/category/4/Pet-Health-Coupons/"><span>PET HEALTH</span></a></li>
+					<li><a href="/content/5/Privacy-Policy/"><span>PRIVACY POLICY</span></a></li>
+					<li class="lastLink"><a href="/content/6/top-health-terms/"><span>TERMS &amp; CONDITIONS</span></a></li>
+				</ul>
+				</div>
+				<div id="footerData">
+					<p>
+					The information provided on this site is for informational purposes only and is not intended as a substitute for advice from your physician or other health care professional or any information contained on or in any product label or packaging. 
+					You should not use the information on this site for diagnosis or treatment of any health problem or for prescription of any medication or other treatment. 
+					You should consult with a healthcare professional before starting any diet, exercise or supplementation program, before taking any medication, or if you have or suspect you might have a health problem. 
+					</p>
+					
+					<p>All of the deals, coupons, and promotions on this site are subject to change without notice. Tophealthspotcom does not at any time guarantee the accuracy of links, coupons, or deals that are found anywhere on this site.</p>
+					<p>Tophealthspot.com is an online shopping portal used to save you money on the Internet we are not responsible for any products ordered from our affiliate merchants.Before participating in or using any promotional code, discount offer, merchant coupons and deals offered through Tophealthspot.com at any time you must read the fine print associated with each offer as it is written in its original form from the affiliate merchant.</p>
+					<p>Make sure that the correct coupon code or current merchant offer has been applied to your shopping cart before accepting or confirming a purchase. This step will confirm that the discount or merchant coupon has been applie= d to your order at point of sale.</p>
+					<p>All design, content text, original articles and images used within the entire pages of Tophealthspot.com including our blog Healthblogshop.com are &copy; Copyright <?php $startYear = "2009"; if ($startYear == date('Y')) {echo $startYear; } else { echo $startYear . '-' . date('Y') . ','; } ?> Tophealthspot.com, All Rights Reserved.</p>
+					<div id="footerIntLinks">
+						<ul id="block-a">
+							<li><a href="/content/7/online-health-coupons/">Online Health Coupon Codes</a></li>
+							<li><a href="/content/12/wellness-coupons/">Wellness Coupons</a></li>
+						</ul>
+						<ul id="block-b">
+							<li><a href="/content/8/eco-friendly-products/">Eco-Friendly Products</a></li>
+							<li><a href="/content/9/green-home-products/">Green Home Products</a></li>
+						</ul>
+						<ul id="block-c">
+							<li><a href="/content/10/nutritional-product-coupons/">Nutritional Product Coupons</a></li>
+							<li><a href="/content/14/weight-loss-coupons/">Weight Loss Coupons</a></li>
+						</ul>
+						<ul id="block-d">
+							<li><a href="/content/11/great-health-coupons/">Great Health Discounts</a></li>
+							<li><a href="/content/13/skincare-coupons/">Skincare Coupons</a></li>
+						</ul>
+						<ul id="block-e">
+							<li><a href="/content/16/trilastin-coupons/">Trilastin Coupons</a></li>
+							<li><a href="/content/15/health-products/">Health Products</a></li>
+						</ul>
+					</div>	
+					<div class="clearfix"></div>
+				</div>
+				<div id="footerBot">
+					<ul>
+						<li class="lastLink">&copy; Copyright <?php echo date('Y'); ?> Top Health Spot - All Rights Reserved - Owned By GS Enterprises LTD.</li>
+					</ul>
+				</div>
+			</div>
+		<div class="clearfix"></div>
+		</div>
+	<div class="clearfix"></div>
+</div>
+</body>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7890014-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</html>

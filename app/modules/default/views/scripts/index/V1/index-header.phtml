@@ -1,0 +1,48 @@
+<div id="midInfoHolder">
+	<div id="midInfoData">
+		<div id="featuredContent" class="slider">
+		<?php $featuredCoupon = $this->featuredCoupons; 
+				foreach ($featuredCoupon as $featured){ if (isset($featured)) { ?>
+			<div class="slides">
+			<h2 class="slideHeading"><?php echo $featured['couponTitle']; ?></h2>
+			<div class="sliderProdImage"><a href="/coupon/<?php echo $featured['couponID']; ?>/<?php echo $this->titleUrl($featured['couponTitle']); ?>/use/1" target="_new"><img src="<?php echo $featured['image']; ?>" width="125" style="border:0;" /></a> Expires: <?php echo $featured['expirationDate']; ?></div>
+				<div class="slideInfo">
+					
+					<p class="slideByLine"><a href="/coupon/<?php echo $featured['couponID']; ?>/<?php echo $this->titleUrl($featured['couponTitle']); ?>/use/1" target="_new"><?php echo $featured['description']; ?></a></p>
+				  												
+					<p class="sldeMainTxt"><?php $extract = $featured['secondaryDescription'];
+													if ((strlen($extract)>300)&& (strlen($extract)>1)) {
+														$firstSpace = strpos($extract, " ", 295);
+															$extract= substr($extract, 0, $firstSpace); 
+				  												} 
+				  												echo $extract;?></p>
+				  												
+					<p class="slideCouCode">Coupon Code: <?php echo $featured['couponCode']; ?></p>
+					<div class="couButtonsHolder">
+								<ul class="couButtons">
+									<li class="useThis">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="/coupon/<?php echo $featured['couponID']; ?>/<?php echo $this->titleUrl($featured['couponTitle']); ?>/use/1" target="_new"><img src="/assets/images/use-this-coupon.jpg" alt="Use This Coupon Button" /></a></li>
+									<li class="useThis"><a href="/store/detail/id/<?php echo $featured['storeID']; ?>"><img src="/assets/images/more-like-this.jpg" alt="More Like This Button" /></a></li>
+								</ul>
+					</div><!-- End Coupon Buttons Div -->
+				</div>
+			</div>			
+					<?php } ?>
+			<?php } ?>
+		</div>
+		<h1>Newsletter Signup</h1>
+		<div id="newsletterHolder">
+			<p>
+			<span class="textGreen">We  receive new health coupons daily.</span> Register for our newsletter
+			and we will notify you when new health coupons are available. Plus you'll receive tips and information
+			to help you enjoy a healthier lifestyle. <span class="textGreen">Sign up below</span>
+			</p>
+			<?php
+			$this->newsletterForm->setImageSrc('http://tophealthspot.com/assets/images/newsletter-btn.png');
+			echo $this->newsletterForm; ?>
+			
+			
+
+		</div>
+	</div>
+</div>

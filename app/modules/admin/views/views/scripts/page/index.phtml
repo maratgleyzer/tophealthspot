@@ -1,0 +1,38 @@
+      	<div class="box">
+      		<h4 class="white">Pages</h4>
+        <div class="box-container">     		
+      		<table class="table-long">
+      			<thead>
+      				<tr>
+      					<td></td>
+      					<td>Page ID</td>
+      					<td>Article Title</td>
+      					<td>Category</td>
+      					<td>Sub Category</td>
+      					<td></td>
+      				</tr>
+      			</thead>
+      			<tfoot>
+      				<tr>
+      					<td class="col-chk"></td>
+      					<td colspan="5"><div class="align-right">
+      					<a href="/admin/page/add/" class="button"><span>Add Page</span></a></div></td>
+      				</tr>
+      			</tfoot>
+      			<tbody>
+		<?php 
+		foreach( $this->paginator AS $content ){ ?>      			
+      				<tr class="<?php echo $this->cycle(array("","odd"))->next()?>">
+      					<td class="col-chk"><input type="checkbox" /></td>
+      					<td class="col-first"><?php echo $content->pageID; ?></td>
+      					<td class="col-second"><?php echo $content->articleTitle; ?></td>
+      					<td class="col-third"><?php echo $content->categoryName; ?></td>     
+      					<td class="col-third"><?php echo $content->subCategoryName; ?></td>     	 					
+      					<td class="row-nav"><a href="/admin/page/edit/id/<?php echo $content->pageID; ?>" class="table-edit-link">Edit</a> <span class="hidden"> | </span> <a href="#" class="table-delete-link">Delete</a></td>
+      				</tr>
+      			</tbody>
+		<?php  } ?>
+      			
+      		</table>  	
+      	</div><!-- end of div.box-container -->
+      	</div> <!-- end of div.box -->

@@ -1,0 +1,40 @@
+      	<div class="box">
+      		<h4 class="white">Favorite Things</h4>
+        <div class="box-container">     	
+	        <form action="" method="post">	
+	      		<table class="table-long">
+	      			<thead>
+	      				<tr>
+	      					<td></td>
+	      					<td>Page ID</td>
+	      					<td>Title</td>
+	      					<td>Category</td>
+	      					<td></td>
+	      				</tr>
+	      			</thead>
+	      			<tfoot>
+	      				<tr>
+	      					<td class="col-chk"></td>
+	      					<td colspan="4"><input type="submit" value="Update" /></td>
+	      				</tr>
+	      			</tfoot>
+	      			<tbody>
+			<?php 
+			foreach( $this->paginator AS $content ){ ?>      			
+	      				<tr class="<?php echo $this->cycle(array("","odd"))->next()?>">
+	      					<td class="col-chk">
+	      						<input type="hidden" value="0" name="<?php echo $content->pageID; ?>" />
+	      						<input <?php if( $content->isFavorite) echo 'checked="checked"';?> type="checkbox" value="1" name="<?php echo $content->pageID; ?>" />
+	      					</td>
+	      					<td class="col-first"><?php echo $content->pageID; ?></td>      					
+	      					<td class="col-second"><?php echo $content->articleTitle; ?></td>
+	      					<td class="col-third"><?php echo $content->categoryName; ?></td>
+	      					<td class="row-nav"><a href="/admin/category/edit/id/<?php echo $content->categoryID; ?>" class="table-edit-link">Edit</a> <span class="hidden"> | </span> <a href="#" class="table-delete-link">Delete</a></td>
+	      				</tr>
+	      			</tbody>
+			<?php  } ?>
+	      			
+	      		</table>  	
+	      	</form>
+      	</div><!-- end of div.box-container -->
+      	</div> <!-- end of div.box -->

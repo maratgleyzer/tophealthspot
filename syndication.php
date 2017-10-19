@@ -1,0 +1,1 @@
+<?php file("http://www.tophealthspot.com/syndication/"); ?>

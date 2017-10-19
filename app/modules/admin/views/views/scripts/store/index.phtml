@@ -1,0 +1,38 @@
+      	<div class="box">
+      		<h4 class="white">Stores</h4>
+        <div class="box-container">     		
+      		<table class="table-long">
+      			<thead>
+      				<tr>
+      					<td width="5%"></td>
+      					<td width="5%">ID</td>
+      					<td width="25%">Name</td>
+      					<td width="50%">Title</td>
+      					<td width="15%"></td>
+      				</tr>
+      			</thead>
+      			<tfoot>
+      				<tr>
+      					<td class="col-chk"></td>
+      					<td colspan="4"><div class="align-right">
+      					<a href="/admin/store/add/" class="button"><span>Add Store</span></a></div></td>
+      				</tr>
+      			</tfoot>
+      			<tbody>
+		<?php 
+		foreach( $this->paginator AS $store ){ ?>      			
+      				<tr class="<?php echo $this->cycle(array("","odd"))->next()?>">
+      					<td class="col-chk"><input type="checkbox" /></td>
+      					<td class="col-first"><?php echo $store->storeID; ?></td>
+      					<td class="col-second"><?php echo $store->name; ?></td>
+      					<td class="col-third"><?php echo $store->pageTitle; ?></td>      					
+      					<td class="row-nav"><a href="/admin/store/edit/id/<?php echo $store->storeID; ?>" class="table-edit-link">Edit</a> <span class="hidden"> | </span> <a href="/admin/store/delete/id/<?php echo $store->storeID; ?>" class="table-delete-link">Delete</a></td>
+      				</tr>
+      			</tbody>
+		<?php  } ?>
+      			
+      		</table>  	
+      	</div><!-- end of div.box-container -->
+      	</div> <!-- end of div.box -->
+      	      	      	<?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginationControl.phtml'); ?>
+      	

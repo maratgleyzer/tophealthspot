@@ -1,0 +1,71 @@
+<?php 
+$this->headScript()->appendFile('/assets/js/featuredcontentslider.js');
+$this->headScript()->appendFile('/assets/js/sliderControl.js');
+?>
+<div id="couponDetails">
+<h1>TopHealthSpot.com - Health Coupon Advantage Online:</h1>
+<div style="height:128px;overflow-y:scroll;">
+<p>TopHealthSpot.com is your best source for brand name health coupons, diet program coupons, weight loss coupon codes, bath &amp; beauty product coupons and pet health coupons.</p>
+
+<p>We update our coupon deals and discount coupon codes daily and search out the best discount health and wellness product deals so you don't have too! Our commitment to our loyal customers is to always get the lowest published price, saving you time and money every time you shop with us online.</p>
+
+<p>What sets Tophealthspot.com apart from other coupon sites is the fact that we specialize in health coupons. Our main focus is on health and wellness products that promote a well rounded healthy lifestyle.If your looking for the largest most comprehensive selection of health products, diet programs, bath and beauty essentials and pet health products your right at home with Tophealthspot.com. Choose from 1,000's of health coupon codes, discounts, BOGO offers and free shipping coupons to get what you need conveniently shipped right to your door.
+</p>
+</div>
+<br />
+
+	<h1>Available Health Coupons:</h1>	
+	<?php foreach( $this->storesPaginator as $store) {  
+ 	 				$coupons = $this->coupon->fetchByStore($store->storeID);
+ 			foreach( $coupons as $coupon ) { ?>
+ 				
+	
+					<div class="couponContent">
+						<h2 style="margin:0.50em 0 0 0.50em;padding:0;"><?php echo $coupon['couponTitle']; ?></h2>
+						<div class="adBanner"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><img src="<?php echo $coupon['image']; ?>" width="125" style="border:0;" /></a> <br /> Expires: <?php echo $coupon['expirationDate']; ?></div>
+						<div class="couponDetails">
+						<p class="byline"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><?php echo $coupon['description']; ?></a></p>
+						<br /><p class="couInfo"><?php echo $coupon['secondaryDescription']; ?></p>
+							<div class="couCodeDate">
+								<p class="couCode">Coupon Code: <?php echo $coupon['couponCode']; ?></p>
+									<ul class="couButtons">
+										<li class="useThis">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><img src="/assets/images/use-this-coupon.jpg" alt="Use This Coupon Button" /></a></li>
+										<li class="useThis"><a href="/store/detail/id/<?php echo $store['storeID']; ?>"><img src="/assets/images/more-like-this.jpg" alt="More Like This Button" /></a></li>
+									</ul>
+							</div>
+						</div><!-- End Coupon Details Div -->
+					</div><!-- End Coupon Content Div -->
+				<?php } ?>
+	<?php } ?>
+	
+				<?php echo $this->paginationControl($this->storesPaginator, 'Sliding', 'paginationControl.phtml'); ?>
+				</div><!-- End Page Details Div -->
+				</div>
+					<div id="colRt">
+							<?php
+							if ($this->layoutSpecials)
+							{
+								foreach ($this->layoutSpecials as $special)
+								{
+									$i = 0;
+									echo "<div id='special'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialcoupon'>".++$i.". $coupon[storeName] <div class='clearfix'></div><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['couponTitle'])."/use/1' target='_new'>$coupon[couponTitle]</a></div>";
+								}
+							}
+							?>
+							<br />
+							<div id="blogFeed">
+							<h3>Latest Blog Entries</h3>
+							<ul>
+							<?php foreach ( $this->feed as $item ){?>
+							<li><a href="<?php echo $item->getLink(); ?>" ><?php echo $item->getTitle(); ?></a></li>
+							<?php }?>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<?php foreach( $this->adBanners as $adBanner) { ?>
+    	 				 <div class="adBanner"><a href="<?php echo $adBanner['href']; ?>" target="_new"><img src="<?php echo $adBanner['image']; ?>" width="<?php echo $adBanner['width']; ?>" height="<?php echo $adBanner['height']; ?>" style="border:0;" alt="<?php echo $adBanner['alt']; ?>" /></a></div>
+    	 				 <?php } ?>   
+					</div>

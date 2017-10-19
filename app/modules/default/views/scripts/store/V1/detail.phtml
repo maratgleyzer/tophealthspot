@@ -1,0 +1,91 @@
+<div id="couponDetails">
+<h1><?php echo $this->store->getName();?></h1>	
+
+<div style="float:left;padding:7px 5px 10px 0;width:192px;">
+<a href="<?php echo $this->store->url; ?>" target="_new"><img src="/assets/images/store-logos/<?php echo $this->store->storeID; ?>.jpg" width="192" height="48" style="border:0;" alt="Store Logo" /></a>
+<br />
+<div style="font-size:10px;text-align:justify;">
+<?php echo $this->store->secondarydescription; ?>
+</div>
+</div>
+
+<div style="float:left;padding:7px 0 10px 5px;">
+<a href="<?php echo $this->store->url; ?>" target="_new"><img src="/assets/images/store-screenshots/<?php echo $this->store->storeID; ?>.gif" width="288" height="162" style="border:0;" alt="Website Screenshot" /></a>
+</div>
+
+<div class="clearfix"></div>
+
+<h1>Available Coupons</h1>
+
+	<?php
+
+	if (count($this->coupons) > 0) {
+	
+	foreach( $this->coupons as $coupon ) { ?>
+ 				
+					<div class="couponContent">
+						<h2 style="margin:0.50em 0 0 0.50em;padding:0;"><?php echo $coupon['couponTitle']; ?></h2>
+						<div class="adBanner"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><img src="<?php echo $coupon['image']; ?>" width="125" style="border:0;" /></a> <br /> Expires: <?php echo $coupon['expirationDate']; ?></div>
+						<div class="couponDetails">
+						<p class="byline"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><?php echo $coupon['description']; ?></a></p>
+						<br /><p class="couInfo"><?php echo $coupon['secondaryDescription']; ?></p>
+							<div class="couCodeDate">
+								<p class="couCode">Coupon Code: <?php echo $coupon['couponCode']; ?></p>
+									<ul class="couButtons">
+										<li class="useThis" style="margin-left:12.8em;">
+										<a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><img src="/assets/images/use-this-coupon.jpg" alt="Use This Coupon Button" /></a></li>
+									</ul>
+							</div>
+						</div><!-- End Coupon Details Div -->
+					</div><!-- End Coupon Content Div -->
+	<?php
+
+	}
+	
+	}
+	
+	else {
+		
+	echo "<div style=\"text-align:center;\">--- None Available At This Time ---</div>";
+		
+	}
+
+	
+	
+	?>
+
+
+<div class="clearfix"></div>
+
+<h1>More Store Details</h1>
+
+<div>
+	<?php echo $this->store->description;?>
+</div>
+
+</div><!-- End Page Details Div -->
+				</div>
+					<div id="colRt">
+							<?php
+							if ($this->layoutSpecials)
+							{
+								foreach ($this->layoutSpecials as $special)
+								{
+									$i = 0;
+									echo "<div id='special'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialcoupon'>".++$i.". $coupon[storeName] <div class='clearfix'></div><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['couponTitle'])."/use/1' target='_new'>$coupon[couponTitle]</a></div>";
+								}
+							}
+							?>
+							<br />
+						<div id="blogFeed">
+							<h3>Latest Blog Entries</h3>
+							<ul>
+							<?php foreach ( $this->feed as $item ){?>
+							<li><a href="<?php echo $item->getLink(); ?>" ><?php echo $item->getTitle(); ?></a></li>
+							<?php }?>
+							</ul>
+							<div class="clearfix"></div>
+						</div>  
+					</div>

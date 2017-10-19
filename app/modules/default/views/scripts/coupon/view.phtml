@@ -1,0 +1,58 @@
+<div id="couponDetails">
+<h1>Available Health Coupons For This Category</h1>	
+					<div class="couponContent">
+						<h2 style="margin:0.50em 0 0 0.50em;padding:0;"><?php echo $this->coupon['couponTitle']; ?></h2>
+						<div class="adBanner"><a href="/coupon/<?php echo $this->coupon['couponID']; ?>/<?php echo $this->titleUrl($this->coupon['couponTitle']); ?>/use/1" target="_new"><img src="<?php echo $this->coupon['image']; ?>" width="125" style="border:0;" /></a> <br /> Expires: <?php echo $this->coupon['expirationDate']; ?></div>
+						<div class="couponDetails">
+						<p class="byline"><a href="/coupon/<?php echo $this->coupon['couponID']; ?>/<?php echo $this->titleUrl($this->coupon['couponTitle']); ?>/use/1" target="_new"><?php echo $this->coupon['description']; ?></a></p>
+						<br /><p class="couInfo"><?php echo $this->coupon['secondaryDescription']; ?></p>
+							<div class="couCodeDate">
+								<p class="couCode">Coupon Code: <?php echo $this->coupon['couponCode']; ?></p>
+									<ul class="couButtons">
+										<li class="useThis">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="/coupon/<?php echo $this->coupon['couponID']; ?>/<?php echo $this->titleUrl($this->coupon['couponTitle']); ?>/use/1" target="_new"><img src="/assets/images/use-this-coupon.jpg" alt="Use This Coupon Button" /></a></li>
+										<li class="useThis"><a href="/store/detail/id/<?php echo $this->coupon['storeID']; ?>"><img src="/assets/images/more-like-this.jpg" alt="More Like This Button" /></a></li>
+									</ul>
+							</div>
+						</div><!-- End Coupon Details Div -->
+					</div><!-- End Coupon Content Div -->
+					<div id="couponDetailsPage">
+						<?php echo $this->coupon['details']; ?>
+					</div>
+
+				</div><!-- End Page Details Div -->
+				</div>
+					<div id="colRt">
+					<h2>Send This To A Friend</h2>
+						<?php echo $this->sendToFriendForm; ?>
+							<?php
+							if ($this->layoutSpecials)
+							{
+								foreach ($this->layoutSpecials as $special)
+								{
+									$i = 0;
+									echo "<div id='special'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialcoupon'>".++$i.". $coupon[storeName] <div class='clearfix'></div><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['couponTitle'])."/use/1' target='_new'>$coupon[couponTitle]</a></div>";
+								}
+							}
+							?>
+							<br />
+							<div id="blogFeed">
+							<h3><?php echo $this->h3_4; ?></h3>
+							<ul>
+							<?php foreach ( $this->feed as $item ){?>
+							<li><a href="<?php echo $item->getLink(); ?>" ><?php echo $item->getTitle(); ?></a></li>
+							<?php }?>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+			<div class="adBanner"><a href="http://coupons219.Tinnitus7.hop.clickbank.net" target="_new"><img src="/assets/images/ad-banners/Coupon_TinnitusMiracle_210x210px.jpg" width=210" height="210" style="border:0;" alt="Tinnitus Miracle Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=www%2Eecresearchcorp%2Ecom%2Fc%2D4%2Dcellulite%2Easpx" target="_new"><img src="/assets/images/ad-banners/Coupon_TrilastinCellulite_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Cellulite Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=trilastin%2Ecom%2Forder%2Eshtml" target="_new"><img src="/assets/images/ad-banners/Coupon_TriLastinCellulite3_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Coupon Code" /></a></div>
+			<?php //foreach( $this->adBanners as $adBanner) { ?>
+<!--    	 		<div class="adBanner"><a href="<?php echo $adBanner['href']; ?>" target="_new"><img src="<?php echo $adBanner['image']; ?>" width="<?php echo $adBanner['width']; ?>" height="<?php echo $adBanner['height']; ?>" style="border:0;" alt="<?php echo $adBanner['alt']; ?>" /></a></div>//-->
+    	 	<?php //} ?>
+					</div>
+					
+					

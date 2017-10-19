@@ -1,0 +1,30 @@
+      	<div style="float:right;width:200px;margin-top:40em;padding-right:20px;">
+      	<div style="font-weight:bold;font-size:14px;">Image Criteria</div><br />
+      	<span style="font-weight:bold;">store logos</span><br />
+      	<div>192 width x 48 height</div>
+      	<div>*.JPG format</div><br />
+      	<span style="font-weight:bold;">store screenshots</span><br />
+      	<div>288 width x 162 height</div>
+      	<div>*.GIF format</div><br /><br />
+      	<div style="font-weight:bold;font-size:14px;">Store Videos</div><br />
+      	<div>ONLY FOR YOUTUBE VIDEOS</div><br />
+      	<div>In order to embed a YouTube video, follow these instructions:</div><br />
+      	<div>1. Find the video to be embedded on YouTube.</div><br />
+      	<div>2. Below and to the right of the video itself, under the "Views" counter, there should be an &quot;&lt;Embed&gt;&quot; button.</div><br />
+      	<div>3. Click the Embed button, and a textarea box will open up below it with several lines of code (note that, some videos may not have embedding enabled).</div><br />
+      	<div>4. In this embed code, find the URL link assigned to the &quot;value&quot; parameter, as in:</div><br />
+		<div>&lt;object width=&quot;640&quot; height=&quot;385&quot;&gt;&lt;param name=&quot;movie&quot; value=&quot;<strong>http://www.youtube.com/v/a1OeYKF78dw?fs=1&amp;hl=en_US</strong>&quot;&gt;&lt;/param&gt;&lt;/code&gt;.......</div><br />
+      	<div>5. Copy this URL and paste it into the &quot;Video URL&quot; field of the store form (DO NOT include the surrounding quotes).</div><br />
+      	</div>
+      	
+      	<div class="box">      
+      		<h4 class="white">Edit Store</h4>
+        <div class="box-container">
+<?php
+if (isset($this->upload_error) && strlen($this->upload_error > 0)) echo "<ul class='form-error-inline'><li>".$this->upload_error."</li></ul></li>";
+?>
+						<?php echo $this->form; ?>
+      				<span class="clearFix">&nbsp;</span>
+        </div><!-- end of div.box-container -->
+      	</div><!-- end of div.box -->
+

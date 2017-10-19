@@ -1,0 +1,72 @@
+		
+		<div id="rightColumn">
+			<div id="headerRightColumn"><h2 class="headerSpecialDeals"><?php echo $this->h3_3; ?></h2></div>
+			<div id="rightColumnTop"></div>
+			<div id="rightColumnBody">
+
+							<?php
+							if ($this->layoutSpecials)
+							{
+								$j = 0;
+								foreach ($this->layoutSpecials as $special)
+								{
+									++$j; $i = 0;
+									echo "<div class='".($j == 1 ? "firstSpecial" : "nextSpecial")."'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialstore'>".++$i.". $coupon[storeName]</div><div class='specialcoupon'><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['storeName'])."/".$this->titleUrl($coupon['description'])."/use/1' target='_new'>$coupon[description]</a></div>";
+								}
+							}
+							?>
+			
+			</div>
+			<div id="rightColumnBottom"></div>	
+			<div id="headerRightColumn"><h2 class="headerLatestBlogs"><?php echo $this->h3_4; ?></h2></div>
+			<div id="blog_graphic">
+			<a href="/blog" title="Health & Beauty Blog" target="_blank"><img src="/assets/images/blog_graphic.jpg" alt="Health & Beauty Blog" style="border: 0;margin: 5px;" /></a>
+			<hr noshade />
+			</div>
+			
+			<div style="margin-left: -0.28em">
+			<div class="adBanner"><a href="http://coupons219.Tinnitus7.hop.clickbank.net" target="_new"><img src="/assets/images/ad-banners/Coupon_TinnitusMiracle_210x210px.jpg" width=210" height="210" style="border:0;" alt="Tinnitus Miracle Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=www%2Eecresearchcorp%2Ecom%2Fc%2D4%2Dcellulite%2Easpx" target="_new"><img src="/assets/images/ad-banners/Coupon_TrilastinCellulite_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Cellulite Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=trilastin%2Ecom%2Forder%2Eshtml" target="_new"><img src="/assets/images/ad-banners/Coupon_TriLastinCellulite3_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Coupon Code" /></a></div>
+			<?php //foreach( $this->adBanners as $adBanner) { ?>
+<!--    	 		<div class="adBanner"><a href="<?php echo $adBanner['href']; ?>" target="_new"><img src="<?php echo $adBanner['image']; ?>" width="<?php echo $adBanner['width']; ?>" height="<?php echo $adBanner['height']; ?>" style="border:0;" alt="<?php echo $adBanner['alt']; ?>" /></a></div>//-->
+    	 	<?php //} ?>
+    	 	</div>
+
+		</div>
+		
+<div id ="centerColumn">
+
+<div id="centerColumnTop"></div>
+<div id="centerColumnBody">
+
+<h2>All Stores Featured On TopHealthSpot</h2>
+<br /><br />
+
+<ul style="list-style-type: none;">
+<li style="display: inline-block;vertical-align: top;">
+<ul style='font-size:10px;width:190px;text-align:center;list-style-type: none;'>
+<?php 
+
+$store_quant = count($this->stores);
+$clmn1_quant = ceil($store_quant / 3);
+$clmn1_count = 0;
+
+foreach( $this->stores as $store ) {
+	if ($clmn1_count == $clmn1_quant) {
+		echo "</ul></li><li style='display: inline-block;vertical-align: top;'><ul style='font-size:10px;width:190px;text-align:center;list-style-type: none;'>";
+		$clmn1_count = 0;
+	}
+?>
+	<li style="margin-bottom:10px;"><a href="/store/<?php echo $store->storeID.'/'.$this->titleUrl($store->name); ?>/"><img src="/assets/images/store-logos/<?php echo $store->storeID; ?>.jpg" width="128" style="border:1px solid #E48022;" alt="<?php echo $store->name; ?>" /></a></li>
+<?php ++$clmn1_count; } ?>
+</ul>
+</li>
+</ul>
+
+</div>
+<div id="centerColumnBottom"></div>
+
+</div>

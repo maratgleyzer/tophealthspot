@@ -1,0 +1,32 @@
+/**
+ * translator wrapper
+ */
+#translator {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+/**
+ * dropdown box
+ */
+#translator select {
+  padding: 0;
+  margin: 0;
+}
+/**
+ * translator footer
+ */
+#translator small, #translator small a:link, #translator small a:active, #translator small a:visited, #translator small a:hover {
+  font-family: Arial, sans-serif;
+  letter-spacing: 0;
+  text-decoration: none;
+  color: #aaa;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+  text-transform: none;
+  font-style: normal;
+  font-size: 10px;
+}

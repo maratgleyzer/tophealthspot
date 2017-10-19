@@ -1,0 +1,60 @@
+<div id="couponDetails">
+<div style="height:128px;overflow-y:scroll;">
+<p><?php echo $this->subCategory->getDetails(); ?></p>
+</div>
+<br />
+
+<h1>Available Health Coupons For This Category</h1>
+	<?php foreach( $this->storesPaginator as $store) { 
+ 	 $coupons = $this->coupon->fetchByStoreCategory($store->storeID, $this->categoryID);
+ 			foreach( $coupons as $coupon ) { ?>
+ 				
+					<div class="couponContent">
+						<h2 style="margin:0.50em 0 0 0.50em;padding:0;"><?php echo $coupon['couponTitle']; ?></h2>
+						<div class="adBanner"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><img src="<?php echo $coupon['image']; ?>" width="125" style="border:0;" /></a> <br /> Expires: <?php echo $coupon['expirationDate']; ?></div>
+						<div class="couponDetails">
+						<p class="byline"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><?php echo $coupon['description']; ?></a></p>
+						<br /><p class="couInfo"><?php echo $coupon['secondaryDescription']; ?></p>
+							<div class="couCodeDate">
+								<p class="couCode">Coupon Code: <?php echo $coupon['couponCode']; ?></p>
+									<ul class="couButtons">
+										<li class="useThis">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['couponTitle']); ?>/use/1" target="_new"><img src="/assets/images/use-this-coupon.jpg" alt="Use This Coupon Button" /></a></li>
+										<li class="useThis"><a href="/store/detail/id/<?php echo $store['storeID']; ?>"><img src="/assets/images/more-like-this.jpg" alt="More Like This Button" /></a></li>
+									</ul>
+							</div>
+						</div><!-- End Coupon Details Div -->
+					</div><!-- End Coupon Content Div -->
+		<?php } ?>
+	<?php }?>
+	
+				<?php echo $this->paginationControl($this->storesPaginator, 'Sliding', 'paginationControl.phtml'); ?>
+				</div><!-- End Page Details Div -->
+				</div>
+					<div id="colRt">
+							<?php
+							if ($this->layoutSpecials)
+							{
+								foreach ($this->layoutSpecials as $special)
+								{
+									$i = 0;
+									echo "<div id='special'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialcoupon'>".++$i.". $coupon[storeName] <div class='clearfix'></div><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['couponTitle'])."/use/1' target='_new'>$coupon[couponTitle]</a></div>";
+								}
+							}
+							?>
+							<br />
+							<div id="blogFeed">
+							<h3>Latest Blog Entries</h3>
+							<ul>
+							<?php foreach ( $this->feed as $item ){?>
+							<li><a href="<?php echo $item->getLink(); ?>" ><?php echo $item->getTitle(); ?></a></li>
+							<?php }?>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<?php foreach( $this->adBanners as $adBanner) { ?>
+    	 				 <div class="adBanner"><a href="<?php echo $adBanner['href']; ?>" target="_new"><img src="<?php echo $adBanner['image']; ?>" width="<?php echo $adBanner['width']; ?>" height="<?php echo $adBanner['height']; ?>" style="border:0;" alt="<?php echo $adBanner['alt']; ?>" /></a></div>
+    	 				 <?php } ?>   
+					</div>

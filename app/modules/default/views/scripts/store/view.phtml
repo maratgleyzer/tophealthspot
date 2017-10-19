@@ -1,0 +1,164 @@
+
+		<div id="rightColumn">
+			<div id="headerRightColumn"><h2 class="headerLatestBlogs"><?php echo $this->h3_4; ?></h2></div>
+			<div id="blog_graphic">
+			<a href="/blog" title="Health & Beauty Blog" target="_blank"><img src="/assets/images/blog_graphic.jpg" alt="Health & Beauty Blog" style="border: 0;margin: 5px;" /></a>
+			<hr noshade />
+			</div>
+			
+			<div style="margin-left: -0.28em">
+			<div class="adBanner"><a href="http://coupons219.Tinnitus7.hop.clickbank.net" target="_new"><img src="/assets/images/ad-banners/Coupon_TinnitusMiracle_210x210px.jpg" width=210" height="210" style="border:0;" alt="Tinnitus Miracle Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=www%2Eecresearchcorp%2Ecom%2Fc%2D4%2Dcellulite%2Easpx" target="_new"><img src="/assets/images/ad-banners/Coupon_TrilastinCellulite_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Cellulite Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=trilastin%2Ecom%2Forder%2Eshtml" target="_new"><img src="/assets/images/ad-banners/Coupon_TriLastinCellulite3_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Coupon Code" /></a></div>
+			<?php //foreach( $this->adBanners as $adBanner) { ?>
+<!--    	 		<div class="adBanner"><a href="<?php echo $adBanner['href']; ?>" target="_new"><img src="<?php echo $adBanner['image']; ?>" width="<?php echo $adBanner['width']; ?>" height="<?php echo $adBanner['height']; ?>" style="border:0;" alt="<?php echo $adBanner['alt']; ?>" /></a></div>//-->
+    	 	<?php //} ?>
+    	 	</div>
+
+		</div>
+		
+<div id ="centerColumn">
+
+<div id="centerColumnTop"></div>
+<div id="centerColumnBody">
+
+<div style="float: left;padding: 0 15px 10px 15px;width: 192px; height: 200px;">
+<a href="<?php echo $this->store->url; ?>" target="_new"><img src="/assets/images/store-logos/<?php echo $this->store->storeID; ?>.jpg" width="192" style="border:1px solid #E48022;" alt="Store Logo" /></a>
+<br />
+
+<div style="font-size: 10px;text-align: justify;">
+<?php echo $this->store->secondarydescription; ?>
+</div>
+</div>
+
+<div style="padding: 0 10px 10px 0;height: 200px;text-align: center;font-size: 10px;font-color: #006600;">
+<a href="<?php echo $this->store->url; ?>" target="_new"><img src="/assets/images/store-screenshots/<?php echo $this->store->storeID; ?>.gif" width="330" style="border:0;" alt="Website Screenshot" /></a>
+<br />( click the screenshot to visit the site )
+</div>
+
+</div>
+<div id="centerColumnBottom"></div>
+
+<div id="centerColumnTop"></div>
+<div id="centerColumnBody">
+
+<h2><?php echo $this->store->name; ?> Coupons</h2>
+<br class="featuredBR" />
+
+	<?php
+
+	if (count($this->coupons) > 0) {
+		
+		foreach( $this->coupons as $coupon ) { ?>
+			<ul class="couponBox">
+			
+				<li class="couponLogo">
+					<a href="/store/<?php echo $coupon['storeID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/"><img src="/assets/images/store-logos/<?php echo $coupon['storeID']; ?>.jpg" width="100" alt="<?php echo $coupon['storeName']; ?>" style="border: 1px solid #E48022;" /></a>
+				</li>
+	
+				<li class="couponData">
+			
+					<div class="couponTitle"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/<?php echo $this->titleUrl($coupon['description']); ?>/use/1" target="_new"><?php echo $coupon['description']; ?></a></div>
+					<div class="couponDescription"><?php echo $coupon['secondaryDescription']; ?></div>
+
+				</li>
+
+				<li class="couponCodeExpiration">
+					Expires: <?php echo $coupon['expirationDate']; ?><br />
+					Code: <?php echo (preg_match('/needed/i', $coupon['couponCode']) ? '----------------' : $coupon['couponCode']); ?>
+				</li>
+						
+				<li class="couponButtons">
+					<a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/<?php echo $this->titleUrl($coupon['description']); ?>/use/1" target="_new"><img src="/assets/images/use_coupon.gif" width="47" alt="Use This Coupon" border="0" /></a>
+				</li>
+						
+			</ul>	
+
+		<?php }}	
+
+	else {
+		
+	echo "<div style=\"text-align:center;\">--- None Available At This Time ---</div>";
+		
+	} ?>
+
+
+</div>
+<div id="centerColumnBottom"></div>
+
+<div id="centerColumnTop"></div>
+<div id="centerColumnBody">
+
+<h2>Store Details</h2>
+<br class="featuredBR" />
+
+<div id="storeDetails">
+	<?php echo $this->store->description;?>
+</div>
+
+</div>
+<div id="centerColumnBottom"></div>
+
+<?php if (strlen($this->store->video) > 0) { ?>
+
+<div id="centerColumnTop"></div>
+<div id="centerColumnBody">
+
+<h2>Featured Video</h2>
+<br class="featuredBR" />
+
+<div id="storeVideo">
+<object width="540" height="325"><param name="movie" value="<?php echo $this->store->video; ?>"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="<?php echo $this->store->video; ?>" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="540" height="325"></embed></object>
+</div>
+
+</div>
+<div id="centerColumnBottom"></div>
+
+<?php }?>
+
+<div id="centerColumnTop"></div>
+<div id="centerColumnBody">
+
+<h2>Recommended Coupons</h2>
+<br class="featuredBR" />
+
+	<?php
+
+	if (count($this->recommended) > 0) {
+		foreach( $this->recommended as $coupon ) { ?>
+			<ul class="couponBox">
+			
+				<li class="couponLogo">
+					<a href="/store/<?php echo $coupon['storeID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/"><img src="/assets/images/store-logos/<?php echo $coupon['storeID']; ?>.jpg" width="100" alt="<?php echo $coupon['storeName']; ?>" style="border: 1px solid #E48022;" /></a>
+				</li>
+	
+				<li class="couponData">
+			
+					<div class="couponTitle"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/<?php echo $this->titleUrl($coupon['description']); ?>/use/1" target="_new"><?php echo $coupon['description']; ?></a></div>
+					<div class="couponDescription"><?php echo $coupon['secondaryDescription']; ?></div>
+
+				</li>
+
+				<li class="couponCodeExpiration">
+					Expires: <?php echo $coupon['expirationDate']; ?><br />
+					Code: <?php echo (preg_match('/needed/i', $coupon['couponCode']) ? '----------------' : $coupon['couponCode']); ?>
+				</li>
+						
+				<li class="couponButtons">
+					<a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/<?php echo $this->titleUrl($coupon['description']); ?>/use/1" target="_new"><img src="/assets/images/use_coupon.gif" width="47" alt="Use This Coupon" border="0" /></a>
+				</li>
+						
+			</ul>	
+
+		<?php }}	
+
+	else {
+		
+	echo "<div style=\"text-align:center;\">--- None Available At This Time ---</div>";
+		
+	} ?>
+
+</div>
+<div id="centerColumnBottom"></div>
+
+</div>

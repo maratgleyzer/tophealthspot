@@ -1,0 +1,26 @@
+<div id="couponDetails">
+	<?php foreach( $this->paginator as $store) {  
+ 	 $coupons = $this->coupon->fetchByStoreCategory($store->storeID, $store->categoryID);
+ 			foreach( $coupons as $coupon ) { ?>
+<?php } ?>
+
+					<h1><?php echo $coupon['couponTitle']; ?></h1>
+						<div class="couponContent">
+							<h2>Medifast Diet - November Coupon</h2>
+							<div class="vendorLogo">
+								<img class="imglt" src="/assets/images/coupon-vend-logo.jpg" alt="" />
+							</div>
+								<div class="couponDetails">
+									<p class="byline">Medifast Diet - Save <a href="#">$50 off any purchase of $275 or more!</a></p>
+									<p class="couInfo">
+									You can put any info that you want in here. You can put any info that you want in here.
+									You can put any info that you want in here. You can put any info that you want in here.
+									</p>
+									<div class="couCodeDate">
+										<p class="couCode">COUPON CODE: NOV30C</p>
+										<p class="couDate">Expires: 11.30.09</p>
+									</div>
+
+<?php }?>
+						
+				</div><!-- End Page Details Div -->

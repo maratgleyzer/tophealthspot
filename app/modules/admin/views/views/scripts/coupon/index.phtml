@@ -1,0 +1,46 @@
+      	<div class="box">
+      		<h4 class="white">Coupons</h4>
+        <div class="box-container">     		
+      		<table class="table-long">
+      			<thead>
+      				<tr>
+      					<td width="5%"></td>
+      					<td width="5%">ID</td>
+      					<td width="22%">Store</td>
+      					<td width="7%">SubCats</td>
+      					<td width="7%">Specials</td>
+      					<td width="23%">Title</td>
+      					<td width="6%">Clicks</td>
+      					<td width="10%">Expiration</td>
+      					<td width="15%"></td>
+      				</tr>
+      			</thead>
+      			<tfoot>
+      				<tr>
+      					<td class="col-chk"></td>
+      					<td colspan="8"><div class="align-right">
+      					<a href="/admin/coupon/add/" class="button"><span>Add Coupon</span></a></div></td>
+      				</tr>
+      			</tfoot>
+      			<tbody>
+		<?php 
+		foreach( $this->paginator AS $content ){ ?>      			
+      				<tr class="<?php echo $this->cycle(array("","odd"))->next()?>">
+      					<td class="col-chk"><input type="checkbox" /></td>
+      					<td class="col-second"><?php echo $content->couponID; ?></td>
+      					<td class="col-second"><?php echo $content->storeName; ?></td>
+      					<td class="col-third"><?php echo $content->subCategoryCount; ?></td>
+      					<td class="col-third"><?php echo $content->specialCount; ?></td>
+      					<td class="col-third"><?php echo $content->couponTitle; ?></td>
+      					<td class="col-third"><?php echo $content->clickcount; ?></td>    
+      					<td class="col-third"><?php echo $content->expirationDate; ?></td>  
+      					<td class="row-nav"><a href="/admin/coupon/edit/id/<?php echo $content->couponID; ?>" class="table-edit-link">Edit</a> <span class="hidden"> | </span> <a href="/admin/coupon/delete/id/<?php echo $content->couponID; ?>" class="table-delete-link">Delete</a></td>
+      				</tr>
+      			</tbody>
+		<?php  } ?>
+      			
+      		</table>  	
+      	</div><!-- end of div.box-container -->
+      	</div> <!-- end of div.box -->
+      	      	      	<?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginationControl.phtml'); ?>
+      	

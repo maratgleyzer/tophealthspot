@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Top Health Admin</title>		
+	    <link href="/assets/css/reset.css" rel="stylesheet" type="text/css" />
+	    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+	    <link href="/assets/js/jquery.wysiwyg.css" rel="stylesheet" type="text/css" />
+	    <link type="text/css" media="screen" rel="stylesheet" href="/assets/js/colorbox.css" />
+	    <link type="text/css" media="screen" rel="stylesheet" href="/assets/js/colorbox-custom.css" />
+	    <link type="text/css" media="screen" rel="stylesheet" href="/assets/css/custom-theme/jquery-ui-1.7.2.custom.css" />
+	    
+		<style type="text/css">
+        div.wysiwyg ul.panel li {padding:0px !important;} /**textarea visual editor padding override**/
+        </style>
+        <!--[if IE 6]>
+        <link rel="stylesheet" href="/assets/css/ie.css" type="text/css" />
+        <![endif]-->
+        <!--[if IE]>
+                    <link type="text/css" media="screen" rel="stylesheet" href="/assets/js/colorbox-custom-ie.css" title="Cleanity" />
+        <![endif]-->
+		<?php /* echo $this->jQuery(); */ ?>
+<?= $this->jQuery(); ?>
+		
+	    <script type="text/javascript" src="/assets/js/jquery.colorbox-min.js"></script>
+	    <script type="text/javascript" src="/assets/js/jquery.corners.min.js"></script>
+	    <script type="text/javascript" src="/assets/js/bg.pos.js"></script>
+	    <script type="text/javascript" src="/assets/js/jquery.wysiwyg.js"></script>
+	    <script src="/assets/js/tabs.pack.js" type="text/javascript"></script>
+	    <script type="text/javascript" src="/assets/js/cleanity.js"></script>
+		<?php echo $this->headScript() ?>
+	</head>
+<body>
+<div id="container">
+    <div class="hidden"><!-- the modal box container - this div is hidden until it is called from a modal box trigger. see cleanity.js for details -->
+    <div id="sample-modal"><h2 style="font-size:160%; font-weight:bold; margin:10px 0;">Modal Box Content</h2><p>Place your desired modal box content here</p></div>
+    </div><!-- end of hidden -->
+    <div id="header">
+      <div id="top">
+      <h1><a href="#">Top Health Spot Admin</a></h1>
+      <p id="userbox">Hello <strong><?php echo $this->displayName; ?></strong> &nbsp;| &nbsp;<a href="/admin/login/logout">Logout</a> <br />
+      <small>Last Login: 12 May 2009</small></p>
+      <span class="clearFix">&nbsp;</span>
+      </div>
+      <ul id="menu">
+        <li class="selected"><a href="/admin/">Dashboard</a></li>
+        <li><a class="top-level" href="/admin/store/">Stores <span>&nbsp;</span></a>
+          <ul>
+            <li><a href="/admin/store/">View Stores</a></li>
+          </ul>
+        </li>
+        <li><a class="top-level" href="#">Categories <span>&nbsp;</span></a>
+          <ul>
+          	<li><a href="/admin/category/">View Categories</a></li>
+          	<li><a href="/admin/sub-category/">View Sub Categories</a></li>
+          	<li><a href="/admin/ad-banner/">View Ad Banners</a></li>
+          	<li><a href="/admin/special/">View Specials</a></li>
+          	
+          </ul>
+        </li>
+        <li><a class="top-level" href="#">Content <span>&nbsp;</span></a>
+          <ul>
+          	<li><a href="/admin/content/">View Content</a></li>
+          	<li><a href="/admin/content/index-page/">Index Page</a></li>
+          	
+          </ul>
+        </li>
+        <li><a class="top-level" href="#">Coupons <span>&nbsp;</span></a>
+          <ul>
+          	<li><a href="/admin/coupon/">View Coupons</a></li>
+          </ul>
+        </li>
+      </ul>
+	 <form action="" method="get" name="form1" id="form1">
+      <fieldset>
+      <legend>Search</legend>
+        <label id="searchbox">
+        <input type="text" name="s" id="s" />
+        </label>
+        <input class="hidden" type="submit" name="Submit" value="Search" />
+      </fieldset>
+      </form>
+      <span class="clearFix">&nbsp;</span>
+    </div><!-- end of #header -->
+
+<div id="content">
+	<div id="content-top">
+    <h2>Dashboard</h2>
+      <a href="#" id="topLink">Change Order</a> 
+      <span class="clearFix">&nbsp;</span>
+      </div><!-- end of div#content-top -->     
+      <div id="mid-col" class="full-col">
+
+		<?= $this->layout()->content ?>				
+      </div><!-- end of div#mid-col -->
+      
+      <div id="right-col">
+		 <div class="box">
+          		<h4 class="light-grey">Date &amp; Calendar</h4>
+         <div class="box-container">
+		  		<div id="date-container">
+		  		<img src="/assets/images/admin-images/sunny.png" alt="Sunny" /> <span class="hour">22:54</span> <span class="date">18th May 2009<br/>Friday</span>
+                 <span class="clearFix">&nbsp;</span>
+		  	</div><!-- end of div#box-date -->
+          </div><!-- end of div.box-container -->  
+          </div><!-- end of div.box -->  
+          
+         	<div class="box">  	
+		  		<h4 class="light-blue">Quick Visual Links</h4>
+            <div class="box-container">
+		  		<ul id="quick-visual-links">
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-settings.gif" alt="" /><br/>Settings</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-users.gif" alt="" /><br/>Users</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-messages.gif" alt="" /><br/>Messages</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-photos.gif" alt="" /><br/>Photos</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-media.gif" alt="" /><br/>Media</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-design.gif" alt="" /><br/>Design</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-options.gif" alt="" /><br/>Options</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-databases.gif" alt="" /><br/>Databases</a></li>
+		  			<li><a href="#"><img src="/assets/images/admin-images/ql-paths.gif" alt="" /><br/>File Paths</a></li>   
+		  		</ul>
+                <span class="clearFix">&nbsp;</span> 
+          </div><!-- end of div.box-container -->            
+          </div><!-- end of div.box -->            
+      </div><!-- end of div#right-col -->     
+      
+      <span class="clearFix">&nbsp;</span>     
+</div><!-- end of div#content -->
+<div class="push"></div>
+</div><!-- end of #container -->
+
+<div id="footer-wrap">
+	<div id="footer">
+        <div id="footer-top">
+        	<div class="align-left">
+            
+        	</div>
+            <div class="align-right">
+            <h2><a href="#">Top Health Spot</a></h2>
+            </div>
+            <span class="clearFix"></span>
+        </div><!-- end of div#footer-top -->
+        
+        <div id="footer-bottom">
+        	<p>&copy; 2009 Top Health Spot. Built by <a href="http://www.ayrdigitaldesign.com/">AYR Digital Designs</a>	</p>
+        </div>
+        
+	</div>
+</div>
+</body>
+</html>

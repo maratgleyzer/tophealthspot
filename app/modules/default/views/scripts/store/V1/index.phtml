@@ -1,0 +1,43 @@
+<div id="couponDetails" style="text-align:center;">
+<h1>All Stores Featured On Top Health Spot</h1>	
+
+<ul style='float:left;font-size:10px;width:230px;text-align:center;'>
+<?php 
+
+$store_quant = count($this->stores);
+$clmn1_quant = ceil($store_quant / 2);
+$clmn1_count = 0;
+
+foreach( $this->stores as $store){
+	if ($clmn1_count == $clmn1_quant)
+		echo "</ul><ul style='float:right;font-size:10px;width:230px;text-align:center;'>";
+?>
+	<li style="margin-bottom:10px;"><a href="/store/detail/id/<?php echo $store->storeID.'/'.$this->titleUrl($store->name) ; ?>"><img src="/assets/images/store-logos/<?php echo $store->storeID; ?>.jpg" width="176" height="44" style="border:0;" alt="<?php echo $store->name; ?>" /></a></li>
+<?php ++$clmn1_count; } ?>
+</ul>
+</div><!-- End Page Details Div -->
+				</div>
+				<div id="colRt">
+							<?php
+							if ($this->layoutSpecials)
+							{
+								foreach ($this->layoutSpecials as $special)
+								{
+									$i = 0;
+									echo "<div id='special'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialcoupon'>".++$i.". $coupon[storeName] <div class='clearfix'></div><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['couponTitle'])."/use/1' target='_new'>$coupon[couponTitle]</a></div>";
+								}
+							}
+							?>
+							<br />
+							<div id="blogFeed">
+							<h3>Latest Blog Entries</h3>
+							<ul>
+							<?php foreach ( $this->feed as $item ){?>
+							<li><a href="<?php echo $item->getLink(); ?>" ><?php echo $item->getTitle(); ?></a></li>
+							<?php }?>
+							</ul>
+							<div class="clearfix"></div>
+						</div> 
+					</div>

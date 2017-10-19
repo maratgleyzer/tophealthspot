@@ -1,0 +1,40 @@
+      	<div class="box">
+      		<h4 class="white">Ad Banners</h4>
+        <div class="box-container">     		
+      		<table class="table-long">
+      			<thead>
+      				<tr>
+      					<td width="5%"></td>
+      					<td width="5%">ID</td>
+      					<td width="20%">Category</td>
+      					<td width="10%">Dimensions</td>
+      					<td width="45%">Image Url</td>
+      					<td width="15%"></td>
+      				</tr>
+      			</thead>
+      			<tfoot>
+      				<tr>
+      					<td class="col-chk"></td>
+      					<td colspan="5"><div class="align-right">
+      					<a href="/admin/ad-banner/add/" class="button"><span>Add Ad Banner</span></a></div></td>
+      				</tr>
+      			</tfoot>
+      			<tbody>
+		<?php 
+		foreach( $this->paginator AS $content ){ ?>      			
+      				<tr class="<?php echo $this->cycle(array("","odd"))->next()?>">
+      					<td class="col-chk"><input type="checkbox" /></td>
+      					<td class="col-first"><?php echo $content->adBannerID; ?></td>
+      					<td class="col-second"><?php echo $content->categoryName; ?></td>
+      					<td class="col-third"><?php echo $content->width; ?>x<?php echo $content->height; ?></td>
+      					<td class="col-third"><?php echo $content->image; ?></td>
+      					<td class="row-nav"><a href="/admin/ad-banner/edit/id/<?php echo $content->adBannerID; ?>" class="table-edit-link">Edit</a> <span class="hidden"> | </span> <a href="/admin/ad-banner/delete/id/<?php echo $content->adBannerID; ?>" class="table-delete-link">Delete</a></td>
+      				</tr>
+      			</tbody>
+		<?php  } ?>
+      			
+      		</table>  	
+      	</div><!-- end of div.box-container -->
+      	</div> <!-- end of div.box -->
+      	      	      	<?php echo $this->paginationControl($this->paginator, 'Sliding', 'paginationControl.phtml'); ?>
+      	

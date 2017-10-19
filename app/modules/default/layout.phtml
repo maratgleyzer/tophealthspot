@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Online Health Coupon Headquarters - Top Health Spot</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<link href="/assets/css/th.css" media="screen" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div id="wrapper">
+		<div id="contentHolder">
+			<div id="topBar">
+				<a href="#"><img id="logo" src="/assets/images/th-logo.jpg" width="286" height="123" alt="Top Health Spot Logo" /></a>
+				<ul id="topNavigation">
+					<li><a href="#"><span>Home</span></a></li>
+					<li><a href="#"><span>About Us</span></a></li>
+					<li class="lastLink"><a href="#"><span>Contact Us</span></a></li>
+				</ul>
+			</div>
+			<div id="navHolder">
+				<ul id="navigation">
+					<li id="link1"><a href="#"><span>SENIOR HEALTH</span></a></li>
+					<li id="link2"><a href="#"><span>DIET PROGRAMS</span></a></li>
+					<li id="link3"><a href="#"><span>MEN&#39;S/WOMEN&#39;S HEALTH</span></a></li>
+					<li id="link4"><a href="#"><span>MOTHER &amp; CHILD</span></a></li>
+					<li id="link5"><a href="#"><span>HEALTH &amp; FITNESS</span></a></li>
+					<li id="link6"><a href="#"><span>PET HEALTH</span></a></li>
+				</ul>
+			</div>
+				<?php if(isset($this->indexHeader)) { ?>
+					<div id="titleHolder"><h1>TopHealthSpot, the #1 Source for health coupons and discount coupon codes.</h1></div>
+				 <?php echo $this->indexHeader; } ?>
+				
+			<div id="mainContent">
+				<?php if(isset($this->indexSliderNav)) { 
+					      echo $this->indexSliderNav; } ?>
+				<div id="contentLt">
+					<?php if(isset($this->headerImage)) { ?>
+						<div id="pageHeader">
+					    <img src="<?php echo $this->headerImage; ?>" />
+					     </div>
+					     <?php if(isset($this->categoryHeader)){ ?>
+					     <h1 id="pageTitle"><?php echo $this->categoryHeader; ?></h1>
+					     	<?php } else { ?>
+					     	<h1 id="pageTitle"><?php echo $this->subCategoryHeader; ?></h1>
+					     <?php } ?>
+					  <?php } ?>
+					<div id="productNavigation">
+						<div id="productNavTop"></div>
+						<ul id="products">
+							<?php foreach( $this->layoutCategories as $categoryID => $category ){ ?>
+							 <li class="catTitles"><a href="/category/view/id/<?php echo $categoryID; ?>"><?php echo htmlspecialchars($category['name'], null, null, false); ?></a></li>
+							<?php $numSubCategories = count( $category['subCategories']); $i=0; 
+							if (isset($category['subCategories'])) { 
+								foreach ( $category['subCategories'] as $subCategoryID => $subCategoryName ) { ?>
+								<li class="<?php if( $i == $numSubCategories - 1){ echo 'endLink'; } ?>">
+								<a href="/sub-category/view/id/<?php echo $subCategoryID; ?>" ><?php echo $subCategoryName; ?></a>
+								</li>
+    							<?php $i++; } 
+							}
+						}?>
+						</ul>
+	</div><!-- End Product Nav Div -->
+	
+	<?= $this->layout()->content ?>
+
+			<div class="clearfix"></div>
+			</div>
+			<div id="contentBottom"></div>
+			<div id="footer">
+				<div id="footerTop">
+				<ul id="footerLinks">
+					<li><a href="#"><span>SENIOR HEALTH</span></a></li>
+					<li><a href="#"><span>DIET PROGRAMS</span></a></li>
+					<li><a href="#"><span>MEN&#39;S/WOMEN&#39;S HEALTH</span></a></li>
+					<li><a href="#"><span>MOTHER &amp; CHILD</span></a></li>
+					<li><a href="#"><span>HEALTH &amp; FITNESS</span></a></li>
+					<li class="lastLink"><a href="#"><span>PET HEALTH</span></a></li>
+					<li><a href="#"><span>PRIVACY POLICY</span></a></li>
+					<li><a href="#"><span>TERMS &amp; CONDITIONS</span></a></li>
+					<li class="lastLink"><a href="#"><span>CONTACT US</span></a></li>
+				</ul>
+				</div>
+				<div id="footerData">
+					<p>
+					The information provided on this site is for informational purposes only and is not intended as a substitute for advice from your physician or other health care professional or any information contained on or in any product label or packaging. 
+					You should not use the information on this site for diagnosis or treatment of any health problem or for prescription of any medication or other treatment. 
+					You should consult with a healthcare professional before starting any diet, exercise or supplementation program, before taking any medication, or if you have or suspect you might have a health problem. 
+					</p>
+				</div>
+				<div id="footerBot">
+					<ul>
+						<li class="lastLink">&copy; <?php echo date('Y'); ?> Top Health Spot - All Rights Reserved</li>
+					</ul>
+				</div>
+			</div>
+		<div class="clearfix"></div>
+		</div>
+	<div class="clearfix"></div>
+</div>
+</body>
+</html>

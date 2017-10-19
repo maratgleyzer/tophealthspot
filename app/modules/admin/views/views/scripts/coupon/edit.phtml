@@ -1,0 +1,18 @@
+      	<div style="float:right;width:200px;margin-top:5em;padding-right:20px;">
+      	<div style="font-weight:bold;font-size:14px;">Image Criteria</div><br />
+      	<span style="font-weight:bold;">coupon images</span><br />
+      	<div>125 width x 125 height</div>
+      	<div>*.JPG format</div><br />
+      	</div>
+
+      	<div class="box">      
+      		<h4 class="white">Edit Coupon</h4>
+        <div class="box-container">
+<?php
+if ($this->upload_error) echo "<ul class='form-error-inline'><li>".$this->upload_error."</li></ul></li>";
+?>
+						<?php echo $this->form; ?>
+      				<span class="clearFix">&nbsp;</span>
+        </div><!-- end of div.box-container -->
+      	</div><!-- end of div.box -->
+

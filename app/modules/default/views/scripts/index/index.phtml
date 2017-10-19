@@ -1,0 +1,102 @@
+		
+		<div id="rightColumn">
+			<div id="newsletterSignup">
+			<form  id="newsletterSubscribe" class="middle-forms" enctype="application/x-www-form-urlencoded" method="post" action="">
+			<div id="newsletterSignupInputs">
+			<div><input type="text" name="name" id="name" value="enter your first name..." size="27" maxlength="64" onclick="this.value='';" class="newsletterInput"></div>
+			<div><input type="text" name="email" id="email" value="enter your email address..." size="27" maxlength="64" onclick="this.value='';" class="newsletterInput"></div>
+			</div>
+			<input type="image" name="submit" id="submit" src="/assets/images/newsletter_signup_button.jpg" alt="Sign-Up" />
+			</form>
+			</div>
+			<div id="headerRightColumn"><h2 class="headerSpecialDeals"><?php echo $this->h3_3; ?></h2></div>
+			<div id="rightColumnTop"></div>
+			<div id="rightColumnBody">
+
+							<?php
+							if ($this->layoutSpecials)
+							{
+								$j = 0;
+								foreach ($this->layoutSpecials as $special)
+								{
+									++$j; $i = 0;
+									echo "<div class='".($j == 1 ? "firstSpecial" : "nextSpecial")."'>$special[name]</div>";
+									foreach ($special['coupons'] as $coupon)
+										echo "<div class='specialstore'>".++$i.". $coupon[storeName]</div><div class='specialcoupon'><a href='/coupon/$coupon[couponID]/".$this->titleUrl($coupon['storeName'])."/".$this->titleUrl($coupon['description'])."/use/1' target='_new'>$coupon[description]</a></div>";
+								}
+							}
+							?>
+			
+			</div>
+			<div id="rightColumnBottom"></div>	
+			<div id="headerRightColumn"><h2 class="headerLatestBlogs"><?php echo $this->h3_4; ?></h2></div>
+			<div id="blog_graphic">
+			<a href="/blog" title="Health & Beauty Blog" target="_blank"><img src="/assets/images/blog_graphic.jpg" alt="Health & Beauty Blog" style="border: 0;margin: 5px;" /></a>
+			<hr noshade />
+			</div>
+			
+			<div style="margin-left: -0.28em">
+			<div class="adBanner"><a href="http://coupons219.Tinnitus7.hop.clickbank.net" target="_new"><img src="/assets/images/ad-banners/Coupon_TinnitusMiracle_210x210px.jpg" width=210" height="210" style="border:0;" alt="Tinnitus Miracle Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=www%2Eecresearchcorp%2Ecom%2Fc%2D4%2Dcellulite%2Easpx" target="_new"><img src="/assets/images/ad-banners/Coupon_TrilastinCellulite_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Cellulite Coupon" /></a></div>
+			<div class="adBanner"><a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=trilastin%2Ecom%2Forder%2Eshtml" target="_new"><img src="/assets/images/ad-banners/Coupon_TriLastinCellulite3_210x210px.jpg" width=210" height="210" style="border:0;" alt="Trilastin Coupon Code" /></a></div>
+			<?php //foreach( $this->adBanners as $adBanner) { ?>
+<!--    	 		<div class="adBanner"><a href="<?php echo $adBanner['href']; ?>" target="_new"><img src="<?php echo $adBanner['image']; ?>" width="<?php echo $adBanner['width']; ?>" height="<?php echo $adBanner['height']; ?>" style="border:0;" alt="<?php echo $adBanner['alt']; ?>" /></a></div>//-->
+    	 	<?php //} ?>
+    	 	</div>
+
+		</div>
+
+		<div id ="centerColumn">
+
+		<?php if(isset($this->indexHeader)) echo $this->indexHeader; ?>
+
+			<div id="centerColumnTop"></div>
+			<div id="centerColumnBody">
+			
+				<h2><?php echo $this->h2_3; ?></h2>
+				<br class="featuredBR" />
+				
+				<div style="height:110px;margin:0 1.1em 0 1.3em;font-size:12px;color:#666666;overflow-y:scroll;">
+				<?php echo $this->homepage_box_copy; ?>
+				</div>
+				<br />
+			
+				<h2><?php echo $this->h2_4; ?></h2>
+				<br class="featuredBR" />
+
+				<div style="margin-right: 0.25em">
+
+			<?php foreach( $this->storesPaginator as $store) {  
+ 	 				$coupons = $this->coupon->fetchByStore($store->storeID);
+ 					foreach( $coupons as $coupon ) { ?>
+			<ul class="couponBox">
+			
+				<li class="couponLogo">
+					<a href="/store/<?php echo $coupon['storeID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/"><img src="/assets/images/store-logos/<?php echo $coupon['storeID']; ?>.jpg" width="100" alt="<?php echo $coupon['storeName']; ?>" style="border: 1px solid #E48022;" /></a>
+				</li>
+	
+				<li class="couponData">
+			
+					<div class="couponTitle"><a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/<?php echo $this->titleUrl($coupon['description']); ?>/use/1" target="_new"><?php echo $coupon['description']; ?></a></div>
+					<div class="couponDescription"><?php echo $coupon['secondaryDescription']; ?></div>
+
+				</li>
+
+				<li class="couponCodeExpiration">
+					Expires: <?php echo $coupon['expirationDate']; ?><br />
+					Code: <?php echo (preg_match('/needed/i', $coupon['couponCode']) ? '----------------' : $coupon['couponCode']); ?>
+				</li>
+						
+				<li class="couponButtons">
+					<a href="/coupon/<?php echo $coupon['couponID']; ?>/<?php echo $this->titleUrl($coupon['storeName']); ?>/<?php echo $this->titleUrl($coupon['description']); ?>/use/1" target="_new"><img src="/assets/images/use_coupon.gif" width="47" alt="Use This Coupon" border="0" /></a>
+				</li>
+						
+			</ul>	
+
+				<?php }} ?>
+					
+			</div>
+			
+			</div>
+			<div id="centerColumnBottom"></div>
+		</div>

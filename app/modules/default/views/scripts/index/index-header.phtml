@@ -1,0 +1,56 @@
+			<div id="centerColumnTop"></div>
+			<div id="centerColumnBody">
+
+				<h2><?php echo $this->h2_1; ?></h2>
+				<br class="featuredBR" />
+				
+				<div style="height:200px;margin-right:0.8em;overflow-y:scroll;">
+				
+		<?php foreach ($this->featuredCoupons as $featured) {
+				if (isset($featured)) { ?>
+			<ul class="featureBox">
+			
+				<li class="featureLogo">
+					<a href="/store/<?php echo $featured['storeID']; ?>/<?php echo $this->titleUrl($featured['storeName']); ?>/"><img src="/assets/images/store-logos/<?php echo $featured['storeID']; ?>.jpg" width="144" alt="<?php echo $featured['storeName']; ?>" style="border: 1px solid #E48022;" /></a>
+				</li>
+	
+				<li class="featureData">
+			
+					<div class="featureTitle"><a href="/coupon/<?php echo $featured['couponID']; ?>/<?php echo $this->titleUrl($featured['storeName']); ?>/<?php echo $this->titleUrl($featured['description']); ?>/use/1" target="_new"><?php echo $featured['description']; ?></a></div>
+					<div class="featureDescription"><?php echo $featured['secondaryDescription']; ?></div>
+
+				</li>
+
+				<li class="featureCodeExpiration">
+					Expires: <?php echo $featured['expirationDate']; ?><br />
+					Code: <?php echo (preg_match('/needed/i', $featured['couponCode']) ? '----------------' : $featured['couponCode']); ?>
+				</li>
+						
+			</ul>	
+
+		<?php }} ?>
+			
+			</div>
+			
+			</div>
+			<div id="centerColumnBottom"></div>
+
+			<div style="margin:0 0 7px 0;">
+			<a href="http://www.shareasale.com/r.cfm?u=187834&b=311970&m=9120&afftrack=&urllink=trilastin%2Ecom%2Forder%2Eshtml" target="_blank"><img src="/assets/images/ad-banners/TriLastin_SR_Banner.jpg" border="0" alt="Trilastin" /></a>
+<!--
+					<div id="newsletterText">
+					<?php echo $this->newsletter_box_copy; ?>
+					</div>
+					
+					<form id="newsletterSubscribe" class="middle-forms" enctype="application/x-www-form-urlencoded" method="post" action="">
+					<div id="newsletterForm">
+					<div><input type="text" name="name" id="name" value="enter your first name..." size="27" maxlength="64" onclick="this.value='';" class="newsletterInput"></div>
+					<div><input type="text" name="email" id="email" value="enter your email address..." size="27" maxlength="64" onclick="this.value='';" class="newsletterInput"></div>
+					</div>
+					
+					<div id="newsletterSubmit">
+					<input type="image" name="submit" id="submit" src="/assets/images/button_newsletter.gif" alt="Sign-Up">
+					</div>
+					</form>
+//-->
+			</div>			

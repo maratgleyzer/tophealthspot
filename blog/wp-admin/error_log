@@ -1,0 +1,2 @@
+[24-Jan-2010 22:31:42] PHP Warning:  call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'Translator::addAdminFooter' was given in /home/wuggie/public_html/blog/wp-includes/plugin.php on line 339
+[18-Feb-2010 02:30:03] WordPress database error MySQL server has gone away for query UPDATE `wp_comments` SET `comment_approved` = '1' WHERE `comment_ID` = '971' made by wp_set_comment_status
